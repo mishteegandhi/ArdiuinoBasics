@@ -1,0 +1,86 @@
+#include <Servo.h>
+
+Servo turn; //turret
+Servo shoulder; //left
+Servo arm; //right
+Servo gripper;
+// to go down shoulder value decreases
+//decreasing value of turret turns to left. 5 minimum value 135 max value = left to write
+//gripper shut = 12
+void sethome()
+{
+  turn.write(70);
+  shoulder.write(90);
+  arm.write(90);
+}
+
+void setup()
+{ 
+  turn.attach(9);
+  shoulder.attach(8);
+  arm.attach(7);
+  gripper.attach(6);
+  //home position
+  turn.write(70);
+  shoulder.write(90);
+  arm.write(90);
+  gripper.write(12);
+  delay(2000);
+}
+
+void loop()
+{
+  //pick up1
+  turn.write(5);
+  arm.write(70);
+  shoulder.write(30);
+  gripper.write(110);
+  delay(1500);
+  gripper.write(12);
+  delay(1500);
+  sethome();
+  //drop1
+  delay(500);
+  turn.write(100);
+  arm.write(130);
+  shoulder.write(50);
+  delay(1500);
+  gripper.write(110);
+  //pickup2
+  sethome();
+  delay(1500);
+  turn.write(15);
+  shoulder.write(45);
+  arm.write(100);
+  delay(2000);
+  gripper.write(12);
+  delay(1000);
+  //drop2
+  sethome();
+  delay(2000);
+  delay(500);
+  turn.write(130);
+  arm.write(100);
+  shoulder.write(50);
+  delay(1500);
+  gripper.write(110);
+  //pickup3
+  sethome();
+  delay(1500);
+  turn.write(30);
+  shoulder.write(55);
+  arm.write(120);
+  delay(2000);
+  gripper.write(12);
+  delay(1000);
+  //drop3
+  sethome();
+  delay(2000);
+  delay(500);
+  turn.write(150);
+  arm.write(100);
+  shoulder.write(50);
+  delay(1500);
+  gripper.write(110);
+  delay(1500);
+}
